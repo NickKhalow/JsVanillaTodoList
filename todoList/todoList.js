@@ -26,7 +26,7 @@ const todoList = {
     }
 }
 
-const contentUI = document.getElementById("list-content")
+const contentUI = document.getElementById("todolist-root")
 const itemTemplate = document.getElementById("item-template")
 itemTemplate.parentNode.removeChild(itemTemplate)
 

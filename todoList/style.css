@@ -1,0 +1,27 @@
+#todolist-root {
+    flex-grow: 1;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+#item-template {
+    flex-basis: content;
+    margin-bottom: 1em;
+    padding: 1em;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#item-template li {
+    font-size: medium;
+    list-style-type: none;
+}
+
+#item-template button {
+    background-color: #E74C3C;
+}
