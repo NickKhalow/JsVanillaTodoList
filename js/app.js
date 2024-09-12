@@ -1,0 +1,1 @@
+inputBox.onSubmitted((item) => todoList.add(item))
