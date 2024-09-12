@@ -7,18 +7,20 @@
 }
 
 #item-template {
-    flex-basis: content;
+    background-color: white;
+    box-shadow: 0 0.3em 0.5em grey;
     margin-bottom: 1em;
-    padding: 1em;
-    color: white;
+    padding: 0.7em 1em;
+    border-radius: 1em;
     display: flex;
+    flex-basis: content;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
 #item-template li {
-    font-size: medium;
+    font-size: x-large;
     list-style-type: none;
 }
 
