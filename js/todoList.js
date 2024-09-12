@@ -27,26 +27,25 @@ const todoList = {
 }
 
 const contentUI = document.getElementById("list-content")
+const itemTemplate = document.getElementById("item-template")
+itemTemplate.parentNode.removeChild(itemTemplate)
+
 todoList.onContentUpdated((newContent) => {
     console.log(`Content updated: ${newContent}`)
     contentUI.innerHTML = ''
     newContent.forEach(item => {
+        const newTemplate = itemTemplate.cloneNode(true)
 
-        const newSpan = document.createElement("span")
+        const newSpan = newTemplate.querySelector("#item-title")
         newSpan.innerHTML = item
 
-        const button = document.createElement("button")
-        button.innerHTML = "Delete"
+        const button = newTemplate.querySelector("#item-delete")
         button.onclick = () => {
             const index = newContent.indexOf(item)
             todoList.remove(index)
         }
 
-        const root = document.createElement("div")
-        root.appendChild(newSpan)
-        root.appendChild(button)
-
-        contentUI.appendChild(root)
+        contentUI.appendChild(newTemplate)
     });
 })
 //

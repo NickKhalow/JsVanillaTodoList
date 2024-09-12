@@ -10,9 +10,23 @@ body{
     flex-direction: column;
 }
 
-#list-content * {
+#item-template {
+    padding: 1em;
     color: white;
     flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#item-template li {
+    font-size: medium;
+    list-style-type: none;
+}
+
+#item-template button {
+    background-color: #E74C3C;
 }
 
 #input-section {
