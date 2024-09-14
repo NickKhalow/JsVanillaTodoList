@@ -28,7 +28,7 @@ function NewTodoList() {
     }
 }
 
-function NewItemViewFactory(listRootHtml) {
+function NewItemViewFactory(todoList, listRootHtml) {
     const itemTemplate = document.getElementById("item-template")
     itemTemplate.parentNode.removeChild(itemTemplate)
 
@@ -52,7 +52,7 @@ function NewItemViewFactory(listRootHtml) {
 }
 
 function NewViewTodoList(todoList, listRootHtml) {
-    const factory = NewItemViewFactory(listRootHtml)
+    const factory = NewItemViewFactory(todoList, listRootHtml)
 
     todoList.onContentUpdated((newContent) => {
         console.log(`Content updated: ${newContent}`)
