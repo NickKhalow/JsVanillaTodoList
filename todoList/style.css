@@ -7,7 +7,7 @@
     overflow-y: auto;
 }
 
-#item-template {
+#item-content {
     background-color: white;
     box-shadow: 0 0.3em 0.5em grey;
     margin-bottom: 1em;
@@ -20,11 +20,11 @@
     align-items: center;
 }
 
-#item-template li {
+#item-content li {
     font-size: x-large;
     list-style-type: none;
 }
 
-#item-template button {
+#item-content button {
     background-color: #E74C3C;
 }

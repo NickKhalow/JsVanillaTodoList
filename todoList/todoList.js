@@ -31,13 +31,11 @@ function NewTodoList() {
 function NewViewTodoList(todoList, listRootHtml) {
     const itemTemplate = document.getElementById("item-template")
 
-    itemTemplate.parentNode.removeChild(itemTemplate)
-
     todoList.onContentUpdated((newContent) => {
         console.log(`Content updated: ${newContent}`)
         listRootHtml.innerHTML = ''
         newContent.forEach(item => {
-            const newTemplate = itemTemplate.cloneNode(true)
+            const newTemplate = itemTemplate.content.cloneNode(true)
 
             const newSpan = newTemplate.querySelector("#item-title")
             newSpan.innerHTML = item
@@ -54,5 +52,3 @@ function NewViewTodoList(todoList, listRootHtml) {
 
     return todoList
 }
-
-//
