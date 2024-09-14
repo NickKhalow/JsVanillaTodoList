@@ -28,25 +28,43 @@ function NewTodoList() {
     }
 }
 
-function NewViewTodoList(todoList, listRootHtml) {
+function NewItemViewFactory(listRootHtml) {
     const itemTemplate = document.getElementById("item-template")
+    itemTemplate.parentNode.removeChild(itemTemplate)
+
+    return {
+        newItemView: () => {
+            const element = itemTemplate.content.cloneNode(true)
+            element._propertyTitle = element.querySelector("#item-title")
+            element._propertyButton = element.querySelector("#item-delete")
+            element._propertySelfIndex = -1
+            element._propertyButton.onclick = () => todoList.remove(element._propertySelfIndex)
+
+            element.applyItem = (item, index) => {
+                element._propertyTitle.innerHTML = item
+                element._propertySelfIndex = index
+            }
+
+            listRootHtml.appendChild(element)
+            return element
+        }
+    }
+}
+
+function NewViewTodoList(todoList, listRootHtml) {
+    const factory = NewItemViewFactory(listRootHtml)
 
     todoList.onContentUpdated((newContent) => {
         console.log(`Content updated: ${newContent}`)
-        listRootHtml.innerHTML = ''
+
+        while (listRootHtml.firstChild) {
+            const child = listRootHtml.lastChild
+            listRootHtml.removeChild(child)
+        }
+
         newContent.forEach(item => {
-            const newTemplate = itemTemplate.content.cloneNode(true)
-
-            const newSpan = newTemplate.querySelector("#item-title")
-            newSpan.innerHTML = item
-
-            const button = newTemplate.querySelector("#item-delete")
-            button.onclick = () => {
-                const index = newContent.indexOf(item)
-                todoList.remove(index)
-            }
-
-            listRootHtml.appendChild(newTemplate)
+            const itemView = factory.newItemView()
+            itemView.applyItem(item, newContent.indexOf(item))
         });
     })
 
